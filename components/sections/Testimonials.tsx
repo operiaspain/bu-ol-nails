@@ -17,7 +17,7 @@ export function Testimonials() {
     <section
       id="testimonios"
       aria-labelledby="testimonials-heading"
-      className="section-padding bg-gradient-to-br from-[#C9A0DC]/10 via-[#FAF7F5] to-[#F4C2C2]/10"
+      className="section-padding bg-[#1A1410]"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
@@ -26,9 +26,9 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-sm font-medium text-[#9B72B0] uppercase tracking-widest mb-3"
+            className="section-label"
           >
-            Opiniones
+            Reseñas
           </motion.span>
           <motion.h2
             id="testimonials-heading"
@@ -36,10 +36,23 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D2D]"
+            className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#FDFAF6]"
           >
-            Lo que dicen nuestras clientas
+            Lo que dicen{" "}
+            <em className="italic text-[#C9A97A]">nuestras clientas</em>
           </motion.h2>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="gold-line mt-4"
+            aria-hidden="true"
+          >
+            <span className="gold-line-bar" />
+            <span className="gold-line-dot" />
+            <span className="gold-line-bar" />
+          </motion.div>
         </div>
 
         {/* Carousel */}
@@ -49,62 +62,64 @@ export function Testimonials() {
           className="relative"
         >
           <div
-            className="relative overflow-hidden rounded-3xl bg-white border border-[#C9A0DC]/20 shadow-xl p-8 sm:p-12"
+            className="relative overflow-hidden border border-[rgba(201,169,122,0.2)] bg-[rgba(201,169,122,0.04)] p-8 sm:p-12"
             aria-live="polite"
             aria-atomic="true"
           >
             {/* Decorative quote icon */}
             <Quote
-              className="absolute top-8 right-8 h-12 w-12 text-[#C9A0DC]/20"
+              className="absolute top-8 right-8 h-10 w-10 text-[#C9A97A]/15"
               aria-hidden="true"
             />
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                initial={{ opacity: 0, x: 40 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
+                exit={{ opacity: 0, x: -30 }}
                 transition={{ duration: 0.3 }}
                 aria-label={`Testimonio ${current + 1} de ${TESTIMONIALS.length}`}
               >
                 {/* Stars */}
                 <div
-                  className="flex gap-1 mb-6"
+                  className="flex gap-1 mb-5"
                   aria-label={`Valoración: ${TESTIMONIALS[current].rating} de 5 estrellas`}
                 >
-                  {Array.from({ length: TESTIMONIALS[current].rating }).map(
-                    (_, i) => (
-                      <Star
-                        key={i}
-                        className="h-5 w-5 fill-[#C9A0DC] text-[#C9A0DC]"
-                        aria-hidden="true"
-                      />
-                    )
-                  )}
+                  {Array.from({ length: TESTIMONIALS[current].rating }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-[#C9A97A] text-[#C9A97A]"
+                      aria-hidden="true"
+                    />
+                  ))}
                 </div>
+
+                {/* Service badge */}
+                <p className="text-xs font-light tracking-widest uppercase text-[#C9A97A]/70 mb-4">
+                  {TESTIMONIALS[current].service}
+                </p>
 
                 {/* Review text */}
                 <blockquote>
-                  <p className="font-playfair text-xl sm:text-2xl text-[#2D2D2D] leading-relaxed mb-8 italic">
+                  <p className="font-cormorant text-xl sm:text-2xl text-[#FDFAF6] leading-relaxed mb-8 font-light italic">
                     &ldquo;{TESTIMONIALS[current].text}&rdquo;
                   </p>
                   <footer>
                     <div className="flex items-center gap-4">
-                      {/* Avatar placeholder */}
+                      {/* Avatar */}
                       <div
-                        className="h-12 w-12 rounded-full bg-gradient-to-br from-[#C9A0DC] to-[#F4C2C2] flex items-center justify-center text-white font-semibold text-lg"
+                        className="flex h-10 w-10 items-center justify-center border border-[#C9A97A]/40 text-[#C9A97A] font-cormorant text-lg font-light"
                         aria-hidden="true"
                       >
                         {TESTIMONIALS[current].name.charAt(0)}
                       </div>
                       <div>
-                        <cite className="not-italic font-semibold text-[#2D2D2D]">
+                        <cite className="not-italic text-sm font-medium text-[#FDFAF6]">
                           {TESTIMONIALS[current].name}
                         </cite>
-                        <p className="text-sm text-gray-400">
-                          {TESTIMONIALS[current].location} ·{" "}
-                          {TESTIMONIALS[current].date}
+                        <p className="text-xs text-[rgba(253,250,246,0.4)] font-light mt-0.5">
+                          {TESTIMONIALS[current].location} · {TESTIMONIALS[current].date}
                         </p>
                       </div>
                     </div>
@@ -115,14 +130,14 @@ export function Testimonials() {
           </div>
 
           {/* Navigation controls */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-4 mt-6">
             <button
               type="button"
               onClick={prev}
               aria-label="Testimonio anterior"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A0DC]/30 bg-white text-[#9B72B0] hover:bg-[#C9A0DC] hover:text-white hover:border-[#C9A0DC] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC]"
+              className="flex h-9 w-9 items-center justify-center border border-[rgba(201,169,122,0.3)] text-[#C9A97A]/60 hover:border-[#C9A97A] hover:text-[#C9A97A] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A]"
             >
-              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
             </button>
 
             {/* Dots */}
@@ -139,10 +154,10 @@ export function Testimonials() {
                   aria-selected={i === current}
                   aria-label={`Ir al testimonio ${i + 1}`}
                   onClick={() => setCurrent(i)}
-                  className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] ${
+                  className={`h-1.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] ${
                     i === current
-                      ? "bg-[#C9A0DC] w-6"
-                      : "bg-[#C9A0DC]/30 w-2 hover:bg-[#C9A0DC]/60"
+                      ? "bg-[#C9A97A] w-6"
+                      : "bg-[rgba(201,169,122,0.3)] w-1.5 hover:bg-[#C9A97A]/60"
                   }`}
                 />
               ))}
@@ -152,9 +167,9 @@ export function Testimonials() {
               type="button"
               onClick={next}
               aria-label="Testimonio siguiente"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A0DC]/30 bg-white text-[#9B72B0] hover:bg-[#C9A0DC] hover:text-white hover:border-[#C9A0DC] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC]"
+              className="flex h-9 w-9 items-center justify-center border border-[rgba(201,169,122,0.3)] text-[#C9A97A]/60 hover:border-[#C9A97A] hover:text-[#C9A97A] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A]"
             >
-              <ChevronRight className="h-5 w-5" aria-hidden="true" />
+              <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
         </div>

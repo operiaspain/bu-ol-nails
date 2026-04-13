@@ -19,60 +19,62 @@ const itemVariants = {
 };
 
 export function Hero() {
-  const handleScrollToServices = () => {
-    const section = document.getElementById("servicios");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleScrollToAbout = () => {
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
       id="inicio"
-      aria-label="Sección principal de Buñolnails"
-      className="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden"
+      aria-label="Sección principal de Essentia Nails"
+      className="relative min-h-screen flex items-center justify-center bg-[#1A1410] overflow-hidden texture"
     >
-      {/* Decorative background blobs */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-      >
-        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-[#C9A0DC]/20 blur-3xl" />
-        <div className="absolute -bottom-20 -left-40 h-96 w-96 rounded-full bg-[#F4C2C2]/20 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-[#C9A0DC]/5 blur-3xl" />
+      {/* Decorative circles */}
+      <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[700px] w-[700px] rounded-full border border-[rgba(201,169,122,0.08)]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[480px] w-[480px] rounded-full border border-[rgba(201,169,122,0.12)]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[280px] w-[280px] rounded-full border border-[rgba(201,169,122,0.18)]" />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,169,122,0.06) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 30% 40% at 20% 80%, rgba(139,115,85,0.08) 0%, transparent 50%)" }} />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center py-24 pt-32">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center py-24 pt-36">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-center gap-6"
+          className="flex flex-col items-center gap-7"
         >
-          {/* Pill badge */}
+          {/* Eyebrow label */}
           <motion.div variants={itemVariants}>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#C9A0DC]/15 border border-[#C9A0DC]/30 px-5 py-2 text-sm font-medium text-[#9B72B0]">
-              <span aria-hidden="true">💅</span>
-              Salón de uñas en Buñol, Valencia
+            <span className="section-label">
+              Beauty Studio · Buñol, Valencia
             </span>
           </motion.div>
 
           {/* Main headline */}
           <motion.h1
             variants={itemVariants}
-            className="font-playfair text-5xl sm:text-6xl lg:text-7xl font-bold text-[#2D2D2D] leading-tight max-w-4xl"
+            className="font-cormorant text-5xl sm:text-6xl lg:text-7xl font-light text-[#FDFAF6] leading-tight max-w-3xl"
           >
-            Tu belleza,{" "}
-            <span className="gradient-text">nuestro arte</span>
+            Tu mejor versión
+            <br />
+            <em className="italic text-[#C9A97A]">comienza aquí</em>
           </motion.h1>
+
+          {/* Gold divider */}
+          <motion.div variants={itemVariants} className="gold-line" aria-hidden="true">
+            <span className="gold-line-bar" />
+            <span className="gold-line-dot" />
+            <span className="gold-line-bar" />
+          </motion.div>
 
           {/* Sub-headline */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-gray-500 max-w-2xl leading-relaxed"
+            className="text-base text-[rgba(253,250,246,0.6)] max-w-md leading-relaxed font-light tracking-wide"
           >
-            Especialistas en manicura, pedicura, uñas de gel y acrílicas. Productos premium,
-            higiene garantizada y atención personalizada que mereces.
+            con {BUSINESS.person} · Manicura &nbsp;·&nbsp; Estética &nbsp;·&nbsp; Belleza Integral
           </motion.p>
 
           {/* CTA buttons */}
@@ -82,25 +84,20 @@ export function Hero() {
           >
             <Button
               asChild
-              size="xl"
-              className="gap-2 shadow-xl hover:shadow-2xl"
-              aria-label="Reservar cita en Buñolnails (abre en nueva pestaña)"
+              size="lg"
+              aria-label="Reservar cita en Essentia Nails (abre en nueva pestaña)"
             >
-              <a
-                href={BUSINESS.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Calendar className="h-5 w-5" aria-hidden="true" />
-                Reservar cita
+              <a href={BUSINESS.bookingUrl} target="_blank" rel="noopener noreferrer">
+                <Calendar className="h-4 w-4" aria-hidden="true" />
+                Reservar mi cita
               </a>
             </Button>
 
             <Button
-              variant="outline"
-              size="xl"
-              onClick={handleScrollToServices}
-              aria-label="Ver nuestros servicios"
+              variant="outline-dark"
+              size="lg"
+              onClick={handleScrollToAbout}
+              aria-label="Ver servicios disponibles"
             >
               Ver servicios
             </Button>
@@ -109,14 +106,12 @@ export function Hero() {
           {/* Trust indicators */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center gap-6 mt-4 text-sm text-gray-400"
+            className="flex flex-wrap justify-center gap-6 mt-2 text-xs text-[rgba(253,250,246,0.4)] font-light tracking-widest uppercase"
             aria-label="Indicadores de confianza"
           >
-            {["✓ Higiene garantizada", "✓ Reserva online 24/7", "✓ Productos premium"].map(
+            {["Reseñas 5★ en Booksy", "Reserva online 24/7", "Productos premium"].map(
               (item) => (
-                <span key={item} className="flex items-center gap-1">
-                  {item}
-                </span>
+                <span key={item}>{item}</span>
               )
             )}
           </motion.div>
@@ -126,14 +121,15 @@ export function Hero() {
       {/* Scroll indicator */}
       <motion.button
         type="button"
-        onClick={handleScrollToServices}
+        onClick={handleScrollToAbout}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
         transition={{ opacity: { delay: 1.5 }, y: { repeat: Infinity, duration: 2 } }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#C9A0DC] hover:text-[#9B72B0] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded-full p-1"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#C9A97A]/60 hover:text-[#C9A97A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded p-1"
         aria-label="Desplazarse hacia abajo"
       >
-        <ChevronDown className="h-8 w-8" aria-hidden="true" />
+        <span className="text-[0.6rem] tracking-[0.25em] uppercase font-light">Descubrir</span>
+        <ChevronDown className="h-5 w-5" aria-hidden="true" />
       </motion.button>
     </section>
   );

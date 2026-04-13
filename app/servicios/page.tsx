@@ -137,7 +137,7 @@ export default function ServiciosPage() {
                         className="grid grid-cols-1 sm:grid-cols-2 gap-2"
                         aria-label={`Qué incluye ${service.name}`}
                       >
-                        {service.features.map((feat) => (
+                        {(service.features ?? []).map((feat) => (
                           <li
                             key={feat}
                             className="flex items-center gap-2 text-sm text-gray-500"

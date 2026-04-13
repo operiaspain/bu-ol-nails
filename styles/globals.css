@@ -2,36 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Brand CSS Custom Properties ─────────────────────────────────── */
+/* ─── Essentia Nails CSS Custom Properties ─────────────────────────── */
 :root {
-  --primary: #C9A0DC;
-  --primary-dark: #9B72B0;
-  --accent: #F4C2C2;
-  --neutral: #FAF7F5;
-  --text: #2D2D2D;
-  --success: #7DBB8E;
+  --gold:        #C9A97A;
+  --gold-40:     rgba(201, 169, 122, 0.4);
+  --gold-15:     rgba(201, 169, 122, 0.15);
+  --beige:       #F5EFE8;
+  --cream:       #E8DDD0;
+  --dark:        #1A1410;
+  --mid:         #3D2E1E;
+  --earth:       #8B7355;
+  --bone:        #FDFAF6;
+  --footer-dark: #0D0A07;
+
+  /* Alias para compatibilidad con componentes existentes */
+  --primary:      #C9A97A;
+  --primary-dark: #8B7355;
+  --accent:       #F5EFE8;
+  --neutral:      #FDFAF6;
+  --text:         #1A1410;
+  --success:      #7DBB8E;
 
   /* shadcn/ui compatible variables */
-  --background: 30 30% 98%;
-  --foreground: 0 0% 18%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 18%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 18%;
-  --primary-hsl: 285 45% 74%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 340 50% 88%;
-  --secondary-foreground: 0 0% 18%;
-  --muted: 30 20% 94%;
-  --muted-foreground: 0 0% 45%;
-  --accent-hsl: 0 60% 87%;
-  --accent-foreground: 0 0% 18%;
-  --destructive: 0 84% 60%;
+  --background:           35 40% 99%;
+  --foreground:           25 60% 9%;
+  --card:                 35 30% 98%;
+  --card-foreground:      25 60% 9%;
+  --popover:              35 30% 98%;
+  --popover-foreground:   25 60% 9%;
+  --primary-hsl:          35 48% 63%;
+  --primary-foreground:   25 60% 9%;
+  --secondary:            30 30% 92%;
+  --secondary-foreground: 25 60% 9%;
+  --muted:                30 20% 94%;
+  --muted-foreground:     25 20% 45%;
+  --destructive:          0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 30 15% 88%;
-  --input: 30 15% 88%;
-  --ring: 285 45% 74%;
-  --radius: 0.75rem;
+  --border:               30 20% 86%;
+  --input:                30 20% 86%;
+  --ring:                 35 48% 63%;
+  --radius:               0.25rem;
 }
 
 /* ─── Base Styles ──────────────────────────────────────────────────── */
@@ -47,11 +57,13 @@ html {
 }
 
 body {
-  background-color: var(--neutral);
-  color: var(--text);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  background-color: var(--bone);
+  color: var(--dark);
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* ─── Skip to Content (Accessibility) ─────────────────────────────── */
@@ -61,105 +73,117 @@ body {
   left: 1rem;
   z-index: 9999;
   padding: 0.5rem 1rem;
-  background: var(--primary-dark);
-  color: #fff;
-  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--gold);
+  color: var(--dark);
+  border-radius: 0 0 2px 2px;
   font-weight: 600;
   transition: top 0.2s;
   text-decoration: none;
 }
-
 .skip-to-content:focus {
   top: 0;
 }
 
 /* ─── Typography ────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), Georgia, serif;
-  color: var(--text);
-  line-height: 1.2;
+  font-family: var(--font-cormorant), Georgia, serif;
+  color: var(--dark);
+  line-height: 1.15;
+  font-weight: 300;
 }
 
 /* ─── Focus Ring ────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--primary-dark);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 /* ─── Scrollbar Styling ─────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--neutral);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bone); }
+::-webkit-scrollbar-thumb { background: var(--gold-40); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
 /* ─── Section Utility ───────────────────────────────────────────────── */
 .section-padding {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 @media (min-width: 1024px) {
   .section-padding {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
 }
 
-/* ─── Gradient Text ─────────────────────────────────────────────────── */
+/* ─── Gold Divider ──────────────────────────────────────────────────── */
+.gold-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto 32px;
+  width: fit-content;
+}
+.gold-line-bar {
+  display: block;
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.gold-line-dot {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ─── Section Label (uppercase small gold text) ─────────────────────── */
+.section-label {
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* ─── Gradient Text (gold) ──────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #e8a0c4 100%);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--earth) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ─── Hero Background ───────────────────────────────────────────────── */
+/* ─── Hero Background (dark luxury) ────────────────────────────────── */
 .hero-bg {
-  background: linear-gradient(
-    135deg,
-    rgba(201, 160, 220, 0.15) 0%,
-    rgba(244, 194, 194, 0.2) 50%,
-    rgba(250, 247, 245, 1) 100%
-  );
+  background: linear-gradient(160deg, #1A1410 0%, #3D2E1E 60%, #1A1410 100%);
 }
 
 /* ─── Masonry Grid ──────────────────────────────────────────────────── */
 .masonry-grid {
   columns: 2;
-  column-gap: 1rem;
+  column-gap: 0.75rem;
 }
-@media (min-width: 768px) {
-  .masonry-grid {
-    columns: 3;
-  }
-}
-@media (min-width: 1024px) {
-  .masonry-grid {
-    columns: 4;
-  }
-}
+@media (min-width: 768px) { .masonry-grid { columns: 3; } }
+@media (min-width: 1024px) { .masonry-grid { columns: 4; } }
 
 .masonry-item {
   break-inside: avoid;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 /* ─── Shimmer Loading ───────────────────────────────────────────────── */
 .shimmer {
   background: linear-gradient(
     90deg,
-    rgba(201, 160, 220, 0.1) 25%,
-    rgba(201, 160, 220, 0.25) 50%,
-    rgba(201, 160, 220, 0.1) 75%
+    rgba(201, 169, 122, 0.08) 25%,
+    rgba(201, 169, 122, 0.2) 50%,
+    rgba(201, 169, 122, 0.08) 75%
   );
   background-size: 200% 100%;
   animation: shimmer 2s infinite linear;
@@ -171,16 +195,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(155, 114, 176, 0.2);
+  box-shadow: 0 12px 40px rgba(201, 169, 122, 0.15);
 }
 
 /* ─── Button Glow ───────────────────────────────────────────────────── */
 .btn-glow:hover {
-  box-shadow: 0 0 20px rgba(201, 160, 220, 0.5);
+  box-shadow: 0 0 24px rgba(201, 169, 122, 0.4);
 }
 
-/* ─── Prose for descriptions ────────────────────────────────────────── */
-.prose-brand p {
-  color: #555;
-  line-height: 1.75;
+/* ─── Noise Texture Overlay ─────────────────────────────────────────── */
+.texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 1;
 }

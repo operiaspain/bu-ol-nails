@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, MapPin, Phone, Mail, Clock, Sparkles } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { BUSINESS, HOURS, NAV_LINKS } from "@/lib/constants";
 
 export function Footer() {
@@ -8,47 +8,48 @@ export function Footer() {
   return (
     <footer
       role="contentinfo"
-      className="bg-[#2D2D2D] text-white"
+      className="bg-[#0D0A07] text-[#FDFAF6]"
     >
       {/* Main footer content */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="h-5 w-5 text-[#C9A0DC]" aria-hidden="true" />
-              <span className="font-playfair text-xl font-bold text-white">
+            {/* Logo */}
+            <div className="flex items-center gap-2 mb-5">
+              <span className="flex h-8 w-8 items-center justify-center border border-[#C9A97A]/50 text-[#C9A97A] text-xs font-medium tracking-widest">
+                EN
+              </span>
+              <span className="font-cormorant text-xl font-light text-[#FDFAF6] tracking-wide">
                 {BUSINESS.name}
               </span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Salón de uñas profesional en Buñol, Valencia. Tu belleza es nuestro arte.
+            <p className="text-xs text-[rgba(253,250,246,0.45)] leading-relaxed mb-6 font-light">
+              Beauty studio en Buñol, Valencia. Manicura, cejas, pestañas y faciales con {BUSINESS.person}.
             </p>
             {/* Social */}
-            <div className="flex items-center gap-3">
-              <a
-                href={BUSINESS.instagram}
-                aria-label="Síguenos en Instagram (abre en nueva pestaña)"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#C9A0DC] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC]"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-            </div>
+            <a
+              href={BUSINESS.instagram}
+              aria-label="Síguenos en Instagram (abre en nueva pestaña)"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-9 w-9 items-center justify-center border border-[rgba(201,169,122,0.3)] text-[#C9A97A]/60 hover:border-[#C9A97A] hover:text-[#C9A97A] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A]"
+            >
+              <Instagram className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
 
           {/* Navigation links */}
           <div>
-            <h3 className="font-playfair text-base font-semibold text-white mb-4">
+            <h3 className="font-cormorant text-base font-light text-[#FDFAF6] mb-5 tracking-wide">
               Navegación
             </h3>
-            <ul className="space-y-2.5" role="list">
+            <ul className="space-y-3" role="list">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-[#C9A0DC] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                    className="text-xs font-light text-[rgba(253,250,246,0.5)] hover:text-[#C9A97A] transition-colors duration-200 tracking-widest uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
                   >
                     {link.label}
                   </Link>
@@ -59,7 +60,7 @@ export function Footer() {
                   href={BUSINESS.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-[#C9A0DC] hover:text-[#F4C2C2] transition-colors duration-200 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                  className="text-xs font-light text-[#C9A97A] hover:text-[#E8DDD0] transition-colors duration-200 tracking-widest uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
                 >
                   Reservar cita →
                 </a>
@@ -69,7 +70,7 @@ export function Footer() {
 
           {/* Contact info */}
           <div>
-            <h3 className="font-playfair text-base font-semibold text-white mb-4">
+            <h3 className="font-cormorant text-base font-light text-[#FDFAF6] mb-5 tracking-wide">
               Contacto
             </h3>
             <ul className="space-y-3" role="list">
@@ -78,28 +79,28 @@ export function Footer() {
                   href={`https://maps.google.com/?q=${encodeURIComponent(BUSINESS.address.full)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-sm text-gray-400 hover:text-[#C9A0DC] transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                  className="flex items-start gap-2.5 text-xs font-light text-[rgba(253,250,246,0.5)] hover:text-[#C9A97A] transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
                   aria-label={`Abrir en Google Maps: ${BUSINESS.address.full}`}
                 >
-                  <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-[#C9A0DC]/60 group-hover:text-[#C9A0DC]" aria-hidden="true" />
+                  <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#C9A97A]/50 group-hover:text-[#C9A97A]" aria-hidden="true" />
                   <span>{BUSINESS.address.full}</span>
                 </a>
               </li>
               <li>
                 <a
                   href={`tel:${BUSINESS.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-[#C9A0DC] transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                  className="flex items-center gap-2.5 text-xs font-light text-[rgba(253,250,246,0.5)] hover:text-[#C9A97A] transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
                 >
-                  <Phone className="h-4 w-4 shrink-0 text-[#C9A0DC]/60 group-hover:text-[#C9A0DC]" aria-hidden="true" />
+                  <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9A97A]/50 group-hover:text-[#C9A97A]" aria-hidden="true" />
                   <span>{BUSINESS.phone}</span>
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${BUSINESS.email}`}
-                  className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-[#C9A0DC] transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                  className="flex items-center gap-2.5 text-xs font-light text-[rgba(253,250,246,0.5)] hover:text-[#C9A97A] transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
                 >
-                  <Mail className="h-4 w-4 shrink-0 text-[#C9A0DC]/60 group-hover:text-[#C9A0DC]" aria-hidden="true" />
+                  <Mail className="h-3.5 w-3.5 shrink-0 text-[#C9A97A]/50 group-hover:text-[#C9A97A]" aria-hidden="true" />
                   <span>{BUSINESS.email}</span>
                 </a>
               </li>
@@ -108,21 +109,21 @@ export function Footer() {
 
           {/* Hours */}
           <div>
-            <h3 className="font-playfair text-base font-semibold text-white mb-4 flex items-center gap-2">
-              <Clock className="h-4 w-4 text-[#C9A0DC]" aria-hidden="true" />
+            <h3 className="font-cormorant text-base font-light text-[#FDFAF6] mb-5 flex items-center gap-2 tracking-wide">
+              <Clock className="h-3.5 w-3.5 text-[#C9A97A]" aria-hidden="true" />
               Horario
             </h3>
             <ul className="space-y-2" role="list" aria-label="Horario de apertura">
               {HOURS.map((day) => (
                 <li
                   key={day.jsDay}
-                  className="flex items-center justify-between text-sm gap-4"
+                  className="flex items-center justify-between text-xs gap-4"
                 >
-                  <span className="text-gray-400">{day.day}</span>
+                  <span className="text-[rgba(253,250,246,0.45)] font-light">{day.day}</span>
                   {day.isClosed ? (
-                    <span className="text-gray-600 text-xs font-medium">Cerrado</span>
+                    <span className="text-[rgba(253,250,246,0.25)] font-light">Cerrado</span>
                   ) : (
-                    <span className="text-[#C9A0DC] font-medium text-xs">
+                    <span className="text-[#C9A97A] font-light">
                       {day.open} – {day.close}
                     </span>
                   )}
@@ -134,13 +135,13 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
+      <div className="border-t border-[rgba(201,169,122,0.1)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[rgba(253,250,246,0.25)] font-light">
           <p>
             &copy; {currentYear} {BUSINESS.name}. Todos los derechos reservados.
           </p>
-          <p>
-            Diseñado con <span aria-label="amor" role="img">💅</span> en Valencia
+          <p className="tracking-wide">
+            Diseñado con cariño en Valencia
           </p>
         </div>
       </div>

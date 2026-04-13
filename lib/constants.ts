@@ -3,36 +3,40 @@
 // ⚠️  PENDIENTE DEL CLIENTE — rellenar antes del lanzamiento:
 //
 //   phone            → número de teléfono real (ej: "+34 960 000 000")
-//   instagram        → URL completa del perfil (ej: "https://instagram.com/bunolnails")
+//   address.street   → dirección real del estudio
+//   email            → email de contacto real
 //   googleMapsEmbedUrl → ir a maps.google.com, buscar el local, Compartir → Insertar mapa,
 //                        copiar el atributo `src` del <iframe>
 //
 export const BUSINESS = {
-  name: "Buñolnails",
-  tagline: "Tu belleza, nuestro arte",
-  subtagline: "Salón de uñas en Buñol, Valencia",
+  name: "Essentia Nails",
+  person: "Paola",
+  tagline: "Tu mejor versión comienza aquí",
+  subtagline: "Beauty Studio · Buñol, Valencia",
   address: {
-    street: "C. la Hoya",
+    // TODO: reemplazar con la dirección real del estudio
+    street: "",
     postalCode: "46360",
     city: "Buñol",
     region: "Valencia",
     country: "España",
-    full: "C. la Hoya, 46360 Buñol, Valencia, España",
+    full: "Buñol, 46360 Valencia, España",
   },
   // TODO: reemplazar con el teléfono real del negocio
   phone: "+34 XXX XXX XXX",
-  email: "info@bunolnails.com",
-  // TODO: reemplazar con la URL real del perfil de Instagram
-  instagram: "#",
-  bookingUrl:
-    "https://booksy.com/es-es/3727_bunolnails_salon-de-unas_57351_bunol#ba_s=seo",
-  // TODO: reemplazar con el embed real de Google Maps del local
+  // TODO: reemplazar con el email real de contacto
+  email: "info@essentianails.com",
+  instagram: "https://www.instagram.com/essentianailss",
+  instagramHandle: "@essentianailss",
+  bookingUrl: "https://essentianails.booksy.com/c/",
+  // TODO: reemplazar con el embed real de Google Maps del estudio
   googleMapsEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.0!2d-0.7894!3d39.4208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCalle+la+Hoya%2C+46360+Bu%C3%B1ol%2C+Valencia!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.0!2d-0.7894!3d39.4208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBu%C3%B1ol%2C+Valencia!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses",
   priceRange: "€€",
 } as const;
 
 // ─── Opening Hours ───────────────────────────────────────────────────
+// TODO: confirmar horarios reales con Paola
 export interface DaySchedule {
   day: string;
   dayEn: string;
@@ -44,169 +48,265 @@ export interface DaySchedule {
 }
 
 export const HOURS: DaySchedule[] = [
-  { day: "Lunes", dayEn: "Monday", dayShort: "Lun", open: "08:30", close: "21:00", isClosed: false, jsDay: 1 },
-  { day: "Martes", dayEn: "Tuesday", dayShort: "Mar", open: null, close: null, isClosed: true, jsDay: 2 },
-  { day: "Miércoles", dayEn: "Wednesday", dayShort: "Mié", open: "08:30", close: "21:00", isClosed: false, jsDay: 3 },
-  { day: "Jueves", dayEn: "Thursday", dayShort: "Jue", open: "08:30", close: "21:00", isClosed: false, jsDay: 4 },
-  { day: "Viernes", dayEn: "Friday", dayShort: "Vie", open: "08:30", close: "21:00", isClosed: false, jsDay: 5 },
-  { day: "Sábado", dayEn: "Saturday", dayShort: "Sáb", open: null, close: null, isClosed: true, jsDay: 6 },
-  { day: "Domingo", dayEn: "Sunday", dayShort: "Dom", open: null, close: null, isClosed: true, jsDay: 0 },
+  { day: "Lunes",     dayEn: "Monday",    dayShort: "Lun", open: "09:00", close: "20:00", isClosed: false, jsDay: 1 },
+  { day: "Martes",    dayEn: "Tuesday",   dayShort: "Mar", open: "09:00", close: "20:00", isClosed: false, jsDay: 2 },
+  { day: "Miércoles", dayEn: "Wednesday", dayShort: "Mié", open: "09:00", close: "20:00", isClosed: false, jsDay: 3 },
+  { day: "Jueves",    dayEn: "Thursday",  dayShort: "Jue", open: "09:00", close: "20:00", isClosed: false, jsDay: 4 },
+  { day: "Viernes",   dayEn: "Friday",    dayShort: "Vie", open: "09:00", close: "20:00", isClosed: false, jsDay: 5 },
+  { day: "Sábado",    dayEn: "Saturday",  dayShort: "Sáb", open: null,    close: null,    isClosed: true,  jsDay: 6 },
+  { day: "Domingo",   dayEn: "Sunday",    dayShort: "Dom", open: null,    close: null,    isClosed: true,  jsDay: 0 },
 ];
+
+// ─── Service Categories ───────────────────────────────────────────────
+export const SERVICE_CATEGORIES = [
+  { id: "nails",    label: "Nails",             icon: "💅" },
+  { id: "pedicura", label: "Pedicura",           icon: "🌸" },
+  { id: "cejas",    label: "Cejas & Pestañas",   icon: "✨" },
+  { id: "facial",   label: "Faciales",           icon: "🌹" },
+] as const;
+
+export type ServiceCategoryId = typeof SERVICE_CATEGORIES[number]["id"];
 
 // ─── Services ────────────────────────────────────────────────────────
 export interface Service {
   id: string;
+  category: ServiceCategoryId;
   icon: string;
   name: string;
-  nameEn: string;
   description: string;
-  descriptionEn: string;
-  duration: string;
   priceRange: string;
-  features: string[];
+  duration?: string;
+  features?: string[];
 }
 
 export const SERVICES: Service[] = [
+  // ── NAILS ─────────────────────────────────────────────────────────
   {
-    id: "manicura",
+    id: "primera-puesta",
+    category: "nails",
     icon: "💅",
-    name: "Manicura",
-    nameEn: "Manicure",
+    name: "Primera puesta #2",
     description:
-      "Cuida y embellece tus manos con nuestra manicura profesional. Incluye limado, cutículas, hidratación y esmalte de tu elección.",
-    descriptionEn:
-      "Care and beautify your hands with our professional manicure. Includes filing, cuticle care, moisturizing, and polish of your choice.",
-    duration: "45 min",
-    priceRange: "Desde 15€",
-    features: ["Limado y forma", "Tratamiento de cutículas", "Hidratación", "Esmalte incluido"],
+      "Construcción completa de uñas de gel o acrílico. Forma personalizada, diseño a elegir y acabado impecable desde cero.",
+    priceRange: "30€",
+    duration: "90 min",
+    features: ["Gel o acrílico a elegir", "Forma personalizada", "Diseño incluido", "Acabado profesional"],
   },
   {
-    id: "pedicura",
-    icon: "🦶",
-    name: "Pedicura",
-    nameEn: "Pedicure",
-    description:
-      "Mima tus pies con un tratamiento completo de pedicura. Exfoliación, hidratación profunda y acabado impecable para pies suaves y bellos.",
-    descriptionEn:
-      "Pamper your feet with a complete pedicure treatment. Exfoliation, deep moisturizing, and impeccable finish for soft, beautiful feet.",
-    duration: "60 min",
-    priceRange: "Desde 20€",
-    features: ["Baño relajante", "Exfoliación", "Hidratación profunda", "Esmalte incluido"],
-  },
-  {
-    id: "unas-gel",
+    id: "relleno",
+    category: "nails",
     icon: "✨",
-    name: "Uñas de Gel",
-    nameEn: "Gel Nails",
+    name: "Relleno Acrílico/Gel #2",
     description:
-      "Luce uñas perfectas durante semanas con nuestro servicio de gel. Mayor durabilidad, brillo intenso y acabado profesional que cuida tu uña natural.",
-    descriptionEn:
-      "Enjoy perfect nails for weeks with our gel service. Greater durability, intense shine and professional finish that cares for your natural nail.",
-    duration: "75 min",
-    priceRange: "Desde 30€",
-    features: ["Gel de larga duración", "Alta resistencia", "Brillo intenso", "Diseños personalizados"],
+      "Mantenimiento profesional de tu juego de uñas existente. Relleno perfecto para alargar la duración y renovar el diseño.",
+    priceRange: "25€",
+    duration: "60 min",
+    features: ["Relleno de crecimiento", "Renovación del diseño", "Sellado profesional"],
   },
   {
-    id: "unas-acrilicas",
+    id: "semipermanente",
+    category: "nails",
     icon: "💎",
-    name: "Uñas Acrílicas",
-    nameEn: "Acrylic Nails",
+    name: "Semipermanente",
     description:
-      "Transforma tus uñas con extensiones acrílicas de alta calidad. Perfectas para quienes buscan mayor longitud y resistencia con un acabado espectacular.",
-    descriptionEn:
-      "Transform your nails with high-quality acrylic extensions. Perfect for those seeking greater length and strength with a spectacular finish.",
-    duration: "90 min",
-    priceRange: "Desde 40€",
-    features: ["Extensiones personalizadas", "Alta resistencia", "Forma a medida", "Diseños artísticos"],
+      "Esmalte de larga duración con acabado brillante o mate. Hasta 3 semanas de color perfecto sin descascarillado.",
+    priceRange: "18€",
+    duration: "45 min",
+    features: ["Hasta 3 semanas de duración", "Acabado brillante o mate", "Sin descascarillado"],
   },
   {
-    id: "manicura-pedicura",
-    icon: "🌸",
-    name: "Manicura + Pedicura",
-    nameEn: "Manicure + Pedicure",
+    id: "refuerzo-porcelana",
+    category: "nails",
+    icon: "🪄",
+    name: "Refuerzo Porcelana",
     description:
-      "El tratamiento completo para manos y pies. Aprovecha nuestro pack combinado con precio especial y sal del salón con un look impecable de arriba a abajo.",
-    descriptionEn:
-      "The complete treatment for hands and feet. Take advantage of our combined pack with a special price and leave the salon looking impeccable from head to toe.",
-    duration: "90 min",
-    priceRange: "Desde 32€",
-    features: ["Manicura completa", "Pedicura completa", "Precio especial pack", "Hidratación total"],
+      "Tratamiento protector con porcelana para fortalecer y sellar la uña natural. Resultado natural y resistente.",
+    priceRange: "23€",
+    duration: "50 min",
+    features: ["Fortalecimiento natural", "Sellado con porcelana", "Aspecto natural"],
+  },
+
+  // ── PEDICURA ──────────────────────────────────────────────────────
+  {
+    id: "pedicura-normal",
+    category: "pedicura",
+    icon: "🌸",
+    name: "Pedicura Normal",
+    description:
+      "Tratamiento completo para tus pies: limado, cutículas, exfoliación e hidratación con esmalte final a elegir.",
+    priceRange: "24€",
+    duration: "50 min",
+    features: ["Limado y forma", "Cuidado de cutículas", "Exfoliación", "Esmalte incluido"],
+  },
+  {
+    id: "pedicura-spa",
+    category: "pedicura",
+    icon: "🛁",
+    name: "Pedicura Spa",
+    description:
+      "Experiencia de lujo para tus pies. Baño relajante, exfoliación intensiva, masaje e hidratación profunda premium.",
+    priceRange: "27€",
+    duration: "70 min",
+    features: ["Baño relajante", "Exfoliación intensiva", "Masaje de pies", "Hidratación premium"],
+  },
+  {
+    id: "pedicura-sin-esmalte",
+    category: "pedicura",
+    icon: "🌿",
+    name: "Pedicura sin esmaltado",
+    description:
+      "Cuidado esencial de los pies: limado, cutículas y tratamiento hidratante sin color. Perfecto para el día a día.",
+    priceRange: "15€",
+    duration: "35 min",
+    features: ["Limado y forma", "Tratamiento cutículas", "Hidratación"],
+  },
+
+  // ── CEJAS & PESTAÑAS ──────────────────────────────────────────────
+  {
+    id: "depilacion-cejas",
+    category: "cejas",
+    icon: "🌙",
+    name: "Depilación Cejas",
+    description:
+      "Diseño y depilación precisa de cejas con hilo o cera. Forma perfecta adaptada a tu rostro y estilo.",
+    priceRange: "6€",
+    duration: "15 min",
+    features: ["Hilo o cera a elegir", "Diseño personalizado", "Adaptado a tu rostro"],
+  },
+  {
+    id: "laminado-depilacion",
+    category: "cejas",
+    icon: "✨",
+    name: "Laminado + Depilación",
+    description:
+      "Laminado profesional más depilación para unos arcos perfectamente definidos con aspecto de pelo a pelo durante semanas.",
+    priceRange: "28€",
+    duration: "50 min",
+    features: ["Laminado profesional", "Depilación incluida", "Efecto pelo a pelo", "Duración semanas"],
+  },
+  {
+    id: "pack-henna",
+    category: "cejas",
+    icon: "🌟",
+    name: "Pack diseño + depilación + Henna",
+    description:
+      "Tratamiento completo de cejas: diseño personalizado, depilación precisa y pigmentación con henna para color natural y duradero.",
+    priceRange: "15€",
+    duration: "40 min",
+    features: ["Diseño personalizado", "Depilación precisa", "Henna natural", "Color duradero"],
+  },
+  {
+    id: "lifting-pestanas",
+    category: "cejas",
+    icon: "👁",
+    name: "Lifting pestañas + tinte y botox",
+    description:
+      "Lifting con tinte definitivo y tratamiento botox para un resultado curvado, oscuro y brillante que dura hasta 8 semanas.",
+    priceRange: "35€",
+    duration: "60 min",
+    features: ["Lifting permanente", "Tinte definitivo", "Tratamiento botox", "Hasta 8 semanas"],
+  },
+
+  // ── FACIALES ──────────────────────────────────────────────────────
+  {
+    id: "higiene-facial",
+    category: "facial",
+    icon: "🌹",
+    name: "Higiene Facial profunda",
+    description:
+      "Limpieza facial profesional completa: vapor, extracción, exfoliación y mascarilla. Piel renovada, luminosa y libre de impurezas.",
+    priceRange: "35€",
+    duration: "60 min",
+    features: ["Vapor facial", "Extracción profesional", "Exfoliación", "Mascarilla final"],
+  },
+  {
+    id: "limpieza-express",
+    category: "facial",
+    icon: "💫",
+    name: "Limpieza Express",
+    description:
+      "Tratamiento facial rápido y efectivo para cuando el tiempo es limitado. Limpieza, tónico y sérum en una sola sesión revitalizante.",
+    priceRange: "15€",
+    duration: "30 min",
+    features: ["Limpieza profunda", "Tónico y sérum", "Piel lista en 30 min"],
+  },
+  {
+    id: "hydralips",
+    category: "facial",
+    icon: "💋",
+    name: "Hydralips",
+    description:
+      "Tratamiento hidratante intensivo para labios. Exfoliación, mascarilla nutritiva y sérum para labios suaves, voluminosos y definidos.",
+    priceRange: "40€",
+    duration: "45 min",
+    features: ["Exfoliación de labios", "Mascarilla nutritiva", "Sérum intensivo", "Efecto voluminizador"],
   },
 ];
 
-// ─── Why Choose Us ───────────────────────────────────────────────────
+// ─── About / Values ──────────────────────────────────────────────────
 export interface WhyUsItem {
   icon: string;
   title: string;
-  titleEn: string;
   description: string;
-  descriptionEn: string;
 }
 
 export const WHY_US: WhyUsItem[] = [
   {
-    icon: "🧼",
-    title: "Higiene garantizada",
-    titleEn: "Guaranteed hygiene",
-    description: "Todos nuestros materiales son esterilizados entre cada cliente. Tu salud es nuestra prioridad.",
-    descriptionEn: "All our materials are sterilized between each client. Your health is our priority.",
+    icon: "⭐",
+    title: "Profesionalidad",
+    description: "Formación continua y técnicas actualizadas para ofrecerte siempre el mejor resultado posible.",
   },
   {
-    icon: "🌟",
-    title: "Productos premium",
-    titleEn: "Premium products",
-    description: "Trabajamos exclusivamente con marcas reconocidas de la industria para garantizar el mejor resultado.",
-    descriptionEn: "We work exclusively with recognized industry brands to guarantee the best result.",
+    icon: "🤍",
+    title: "Cuidado genuino",
+    description: "Atención personalizada en cada cita, escuchando lo que realmente quieres y adaptándome a ti.",
   },
   {
-    icon: "🏅",
-    title: "10+ años de experiencia",
-    titleEn: "10+ years of experience",
-    description: "Nuestro equipo acumula más de una década de experiencia transformando manos y pies.",
-    descriptionEn: "Our team has more than a decade of experience transforming hands and feet.",
+    icon: "✅",
+    title: "Confianza total",
+    description: "Higiene impecable y productos premium para que te sientas segura y bien cuidada en todo momento.",
   },
   {
-    icon: "📱",
-    title: "Reserva fácil online",
-    titleEn: "Easy online booking",
-    description: "Reserva tu cita en segundos desde tu móvil, sin llamadas, sin esperas, sin complicaciones.",
-    descriptionEn: "Book your appointment in seconds from your phone, no calls, no waiting, no hassle.",
+    icon: "📅",
+    title: "Reserva fácil",
+    description: "Cita online en Booksy en segundos, sin llamadas, sin esperas, desde tu móvil cuando quieras.",
   },
 ];
 
-// ─── Testimonials ────────────────────────────────────────────────────
+// ─── Testimonials (reseñas reales verificadas en Booksy) ─────────────
 export interface Testimonial {
   name: string;
   location: string;
+  service: string;
   rating: number;
   text: string;
   date: string;
 }
 
-// TODO: reemplazar con reseñas reales del negocio (Google, Booksy o capturas de clientes).
-//       Si no hay reseñas disponibles aún, eliminar la sección <Testimonials /> del homepage
-//       en app/page.tsx para no mostrar datos ficticios.
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: "María García",
+    name: "Sabiaurganda",
     location: "Buñol, Valencia",
+    service: "Relleno Acrílico / Gel",
     rating: 5,
-    text: "¡Increíble experiencia! Llevaba años buscando un salón de confianza cerca de casa y Buñolnails ha superado todas mis expectativas. Las uñas de gel duran perfectamente y el trato es exquisito. ¡Ya soy clienta fija!",
-    date: "Marzo 2024",
+    text: "Es mi segunda vez y cada vez más contenta con el trabajo de Paola, es increíble su habilidad y rapidez para reproducir lo que le pidas. Sigo súper encantada y recomiendo 100%.",
+    date: "2024",
   },
   {
-    name: "Laura Martínez",
-    location: "Chiva, Valencia",
+    name: "Diana",
+    location: "Valencia",
+    service: "Laminado cejas + depilación + Henna",
     rating: 5,
-    text: "Me hice la pedicura de spa y fue una experiencia de relax total. El local es precioso, muy limpio y ordenado. La atención personalizada que te dan te hace sentir como una reina. Totalmente recomendado.",
-    date: "Febrero 2024",
+    text: "Paola es muy profesional y trabaja con mucho cuidado para que todo quede perfecto. Es la segunda vez que me hago laminado de cejas y tinte con ella. Su trato es muy amable y además te consulta para estar segura de hacerlo a tu gusto. ¡Repetiré sin duda!",
+    date: "2024",
   },
   {
-    name: "Ana Sánchez",
+    name: "Ana Pérez",
     location: "Buñol, Valencia",
+    service: "Pack diseño cejas con henna + depilación",
     rating: 5,
-    text: "Las uñas acrílicas que me hicieron son absolutamente perfectas. La forma, el diseño... todo al detalle. Recibí muchos cumplidos en mi boda. Mil gracias al equipo de Buñolnails, ¡son maravillosas!",
-    date: "Enero 2024",
+    text: "He salido feliz del centro. Nunca me habían hecho las cejas tan bonitas: forma perfecta, naturales y justo lo que yo quería. Trato increíble y mucha atención al detalle. Ya tengo mi sitio de confianza.",
+    date: "2024",
   },
 ];
 
@@ -271,7 +371,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: "g7",
     src: "https://images.unsplash.com/photo-1736434518489-0eb84070017f?auto=format&fit=crop&w=800&q=80",
-    alt: "Uñas con degradado lavanda y detalles decorativos",
+    alt: "Uñas con degradado y detalles decorativos artísticos",
     width: 800,
     height: 1067,
   },
@@ -287,18 +387,18 @@ export const GALLERY_IMAGES: GalleryImage[] = [
 // ─── Navigation Links ────────────────────────────────────────────────
 export interface NavLink {
   label: string;
-  labelEn: string;
   href: string;
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Inicio", labelEn: "Home", href: "/" },
-  { label: "Servicios", labelEn: "Services", href: "/servicios" },
-  { label: "Galería", labelEn: "Gallery", href: "/galeria" },
-  { label: "Contacto", labelEn: "Contact", href: "/contacto" },
+  { label: "Sobre mí",   href: "/#about" },
+  { label: "Servicios",  href: "/#servicios" },
+  { label: "Galería",    href: "/galeria" },
+  { label: "Reseñas",    href: "/#testimonios" },
+  { label: "Contacto",   href: "/contacto" },
 ];
 
 // ─── Site Metadata ───────────────────────────────────────────────────
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://bunolnails.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://essentianails.com";
 export const OG_IMAGE = "/og-image.svg";

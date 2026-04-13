@@ -12,27 +12,28 @@ import { Contact } from "@/components/sections/Contact";
 import { BUSINESS, SITE_URL, OG_IMAGE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `${BUSINESS.name} · Salón de Uñas Profesional en Buñol, Valencia`,
+  title: `${BUSINESS.name} · Beauty Studio en Buñol, Valencia`,
   description:
-    "Salón de uñas profesional en Buñol, Valencia. Manicura, pedicura, uñas de gel y acrílicas. Reserva online en Booksy. Higiene garantizada, productos premium y 10+ años de experiencia.",
+    "Essentia Nails — Beauty studio en Buñol, Valencia. Manicura, pedicura, cejas, pestañas y faciales con Paola. Reserva tu cita online en Booksy.",
   keywords: [
-    "salón de uñas buñol",
+    "essentia nails",
+    "beauty studio buñol",
     "manicura buñol",
     "pedicura buñol",
-    "uñas gel buñol",
-    "uñas acrílicas buñol",
-    "bunolnails",
-    "nail salon valencia",
+    "cejas buñol",
+    "lifting pestañas buñol",
+    "facial buñol",
+    "essentianailss",
   ],
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: `${BUSINESS.name} · Salón de Uñas en Buñol, Valencia`,
+    title: `${BUSINESS.name} · Beauty Studio en Buñol, Valencia`,
     description:
-      "Manicura, pedicura, uñas de gel y acrílicas. Reserva tu cita online en Booksy.",
+      "Manicura, pedicura, cejas, pestañas y faciales. Reserva tu cita online con Paola en Buñol.",
     url: SITE_URL,
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Buñolnails salón de uñas" }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: `${BUSINESS.name} — Beauty Studio en Buñol, Valencia` }],
   },
 };
 

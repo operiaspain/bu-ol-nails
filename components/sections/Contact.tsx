@@ -20,11 +20,9 @@ export function Contact() {
   const [csrfToken, setCsrfToken] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Generate CSRF token on mount
   useEffect(() => {
     const token = generateCsrfToken();
     setCsrfToken(token);
-    // Set CSRF cookie via API
     document.cookie = `csrf-token=${token}; SameSite=Strict; Secure; Path=/`;
   }, []);
 
@@ -80,7 +78,7 @@ export function Contact() {
     <section
       id="contacto"
       aria-labelledby="contact-heading"
-      className="section-padding bg-[#FAF7F5]"
+      className="section-padding bg-[#FDFAF6]"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
@@ -89,9 +87,9 @@ export function Contact() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-sm font-medium text-[#9B72B0] uppercase tracking-widest mb-3"
+            className="section-label"
           >
-            Contáctanos
+            Contacto
           </motion.span>
           <motion.h2
             id="contact-heading"
@@ -99,16 +97,28 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D2D]"
+            className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#1A1410]"
           >
             Escríbenos
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-gray-500 max-w-xl mx-auto"
+            className="gold-line mt-4"
+            aria-hidden="true"
+          >
+            <span className="gold-line-bar" />
+            <span className="gold-line-dot" />
+            <span className="gold-line-bar" />
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.25 }}
+            className="mt-4 text-sm text-[#1A1410]/55 max-w-xl mx-auto font-light leading-relaxed"
           >
             ¿Tienes alguna pregunta o quieres conocer más sobre nuestros servicios?
             Estaremos encantadas de ayudarte.
@@ -125,12 +135,12 @@ export function Contact() {
             className="lg:col-span-3"
           >
             {formStatus === "success" ? (
-              <div className="flex flex-col items-center justify-center gap-4 p-12 rounded-2xl bg-white border border-[#7DBB8E]/30 text-center">
-                <CheckCircle className="h-16 w-16 text-[#7DBB8E]" aria-hidden="true" />
-                <h3 className="font-playfair text-2xl font-bold text-[#2D2D2D]">
+              <div className="flex flex-col items-center justify-center gap-4 p-12 bg-white border border-[#7DBB8E]/30 text-center">
+                <CheckCircle className="h-14 w-14 text-[#7DBB8E]" aria-hidden="true" />
+                <h3 className="font-cormorant text-2xl font-light text-[#1A1410]">
                   ¡Mensaje enviado!
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-sm text-[#1A1410]/55 font-light">
                   Gracias por contactarnos. Te responderemos en el menor tiempo posible.
                 </p>
                 <Button
@@ -146,9 +156,9 @@ export function Contact() {
                 onSubmit={handleSubmit(onSubmit)}
                 aria-label="Formulario de contacto"
                 noValidate
-                className="space-y-6 bg-white rounded-2xl p-8 border border-[#C9A0DC]/20 shadow-sm"
+                className="space-y-6 bg-white p-8 border border-[rgba(201,169,122,0.2)] shadow-sm"
               >
-                {/* Honeypot field — hidden from real users */}
+                {/* Honeypot */}
                 <input
                   type="text"
                   tabIndex={-1}
@@ -157,8 +167,6 @@ export function Contact() {
                   className="absolute left-[-9999px] opacity-0 h-0 w-0 overflow-hidden"
                   {...register("website")}
                 />
-
-                {/* Hidden CSRF */}
                 <input
                   type="hidden"
                   value={csrfToken}
@@ -168,7 +176,7 @@ export function Contact() {
                 {/* Nombre */}
                 <div className="space-y-2">
                   <Label htmlFor="contact-nombre">
-                    Nombre <span aria-label="campo obligatorio" className="text-[#C9A0DC]">*</span>
+                    Nombre <span aria-label="campo obligatorio" className="text-[#C9A97A]">*</span>
                   </Label>
                   <Input
                     id="contact-nombre"
@@ -191,7 +199,7 @@ export function Contact() {
                 {/* Email */}
                 <div className="space-y-2">
                   <Label htmlFor="contact-email">
-                    Email <span aria-label="campo obligatorio" className="text-[#C9A0DC]">*</span>
+                    Email <span aria-label="campo obligatorio" className="text-[#C9A97A]">*</span>
                   </Label>
                   <Input
                     id="contact-email"
@@ -234,7 +242,7 @@ export function Contact() {
                 {/* Mensaje */}
                 <div className="space-y-2">
                   <Label htmlFor="contact-mensaje">
-                    Mensaje <span aria-label="campo obligatorio" className="text-[#C9A0DC]">*</span>
+                    Mensaje <span aria-label="campo obligatorio" className="text-[#C9A97A]">*</span>
                   </Label>
                   <Textarea
                     id="contact-mensaje"
@@ -256,7 +264,7 @@ export function Contact() {
                 {formStatus === "error" && (
                   <div
                     role="alert"
-                    className="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm"
+                    className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 text-red-600 text-sm"
                   >
                     <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
                     <span>{errorMessage}</span>
@@ -283,7 +291,7 @@ export function Contact() {
                   )}
                 </Button>
 
-                <p className="text-xs text-gray-400 text-center">
+                <p className="text-xs text-[#1A1410]/35 text-center font-light">
                   Al enviar este formulario aceptas nuestra política de privacidad.
                   Nunca compartiremos tus datos con terceros.
                 </p>
@@ -297,12 +305,12 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-2 space-y-8"
-            aria-label="Información del salón"
+            className="lg:col-span-2 space-y-6"
+            aria-label="Información del estudio"
           >
             {/* Contact details */}
-            <div className="bg-white rounded-2xl p-6 border border-[#C9A0DC]/20 shadow-sm space-y-4">
-              <h3 className="font-playfair text-lg font-semibold text-[#2D2D2D]">
+            <div className="bg-white p-6 border border-[rgba(201,169,122,0.15)] shadow-sm space-y-4">
+              <h3 className="font-cormorant text-lg font-light text-[#1A1410]">
                 Información
               </h3>
 
@@ -310,46 +318,46 @@ export function Contact() {
                 href={`https://maps.google.com/?q=${encodeURIComponent(BUSINESS.address.full)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-3 text-sm text-gray-600 hover:text-[#9B72B0] transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                className="flex items-start gap-3 text-sm text-[#1A1410]/60 hover:text-[#C9A97A] transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
                 aria-label={`Dirección: ${BUSINESS.address.full}. Abrir en Google Maps`}
               >
-                <MapPin className="h-4 w-4 mt-0.5 text-[#C9A0DC] shrink-0" aria-hidden="true" />
+                <MapPin className="h-4 w-4 mt-0.5 text-[#C9A97A] shrink-0" aria-hidden="true" />
                 <span>{BUSINESS.address.full}</span>
               </a>
 
               <a
                 href={`tel:${BUSINESS.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-3 text-sm text-gray-600 hover:text-[#9B72B0] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                className="flex items-center gap-3 text-sm text-[#1A1410]/60 hover:text-[#C9A97A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
               >
-                <Phone className="h-4 w-4 text-[#C9A0DC] shrink-0" aria-hidden="true" />
+                <Phone className="h-4 w-4 text-[#C9A97A] shrink-0" aria-hidden="true" />
                 <span>{BUSINESS.phone}</span>
               </a>
 
               <a
                 href={`mailto:${BUSINESS.email}`}
-                className="flex items-center gap-3 text-sm text-gray-600 hover:text-[#9B72B0] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A0DC] rounded"
+                className="flex items-center gap-3 text-sm text-[#1A1410]/60 hover:text-[#C9A97A] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A97A] rounded"
               >
-                <Mail className="h-4 w-4 text-[#C9A0DC] shrink-0" aria-hidden="true" />
+                <Mail className="h-4 w-4 text-[#C9A97A] shrink-0" aria-hidden="true" />
                 <span>{BUSINESS.email}</span>
               </a>
             </div>
 
             {/* Hours */}
-            <div className="bg-white rounded-2xl p-6 border border-[#C9A0DC]/20 shadow-sm">
-              <h3 className="font-playfair text-lg font-semibold text-[#2D2D2D] flex items-center gap-2 mb-4">
-                <Clock className="h-4 w-4 text-[#C9A0DC]" aria-hidden="true" />
+            <div className="bg-white p-6 border border-[rgba(201,169,122,0.15)] shadow-sm">
+              <h3 className="font-cormorant text-lg font-light text-[#1A1410] flex items-center gap-2 mb-4">
+                <Clock className="h-4 w-4 text-[#C9A97A]" aria-hidden="true" />
                 Horario
               </h3>
               <table className="w-full text-sm" aria-label="Horario de apertura">
                 <tbody>
                   {HOURS.map((day) => (
-                    <tr key={day.jsDay} className="border-b border-gray-50 last:border-0">
-                      <td className="py-2 text-gray-600">{day.day}</td>
-                      <td className="py-2 text-right font-medium">
+                    <tr key={day.jsDay} className="border-b border-[rgba(201,169,122,0.08)] last:border-0">
+                      <td className="py-2 text-[#1A1410]/55 font-light">{day.day}</td>
+                      <td className="py-2 text-right">
                         {day.isClosed ? (
-                          <span className="text-gray-400 text-xs">Cerrado</span>
+                          <span className="text-[#1A1410]/30 text-xs font-light">Cerrado</span>
                         ) : (
-                          <span className="text-[#9B72B0]">
+                          <span className="text-[#C9A97A] text-xs font-light">
                             {day.open} – {day.close}
                           </span>
                         )}
@@ -361,9 +369,9 @@ export function Contact() {
             </div>
 
             {/* Map embed */}
-            <div className="rounded-2xl overflow-hidden border border-[#C9A0DC]/20 shadow-sm aspect-video">
+            <div className="overflow-hidden border border-[rgba(201,169,122,0.15)] shadow-sm aspect-video">
               <iframe
-                title="Mapa de ubicación de Buñolnails en C. la Hoya, Buñol, Valencia"
+                title={`Mapa de ubicación de ${BUSINESS.name} en Buñol, Valencia`}
                 src={BUSINESS.googleMapsEmbedUrl}
                 width="100%"
                 height="100%"
@@ -371,7 +379,7 @@ export function Contact() {
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                aria-label="Mapa interactivo de la ubicación del salón"
+                aria-label="Mapa interactivo de la ubicación del estudio"
               />
             </div>
           </motion.aside>

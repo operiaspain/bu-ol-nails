@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { WHY_US } from "@/lib/constants";
+import { WHY_US, BUSINESS } from "@/lib/constants";
 
 const containerVariants = {
   hidden: {},
@@ -16,9 +16,9 @@ const itemVariants = {
 export function WhyUs() {
   return (
     <section
-      id="por-que-nosotras"
-      aria-labelledby="whyus-heading"
-      className="section-padding bg-gradient-to-br from-[#FAF7F5] via-[#F4C2C2]/10 to-[#C9A0DC]/10"
+      id="about"
+      aria-labelledby="about-heading"
+      className="section-padding bg-[#F5EFE8]"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
@@ -27,52 +27,74 @@ export function WhyUs() {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block text-sm font-medium text-[#9B72B0] uppercase tracking-widest mb-3"
+            className="section-label"
           >
-            ¿Por qué elegirnos?
+            Sobre {BUSINESS.person}
           </motion.span>
           <motion.h2
-            id="whyus-heading"
+            id="about-heading"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D2D]"
+            className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#1A1410]"
           >
-            Tu confianza, nuestra prioridad
+            Por qué elegir{" "}
+            <em className="italic text-[#C9A97A]">Essentia</em>
           </motion.h2>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="gold-line mt-4"
+            aria-hidden="true"
+          >
+            <span className="gold-line-bar" />
+            <span className="gold-line-dot" />
+            <span className="gold-line-bar" />
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.25 }}
+            className="mt-4 text-sm text-[#1A1410]/55 max-w-lg mx-auto leading-relaxed font-light"
+          >
+            En Essentia Nails cada cita es una experiencia. {BUSINESS.person} cuida cada detalle
+            para que te vayas sintiéndote exactamente como mereces.
+          </motion.p>
         </div>
 
-        {/* Feature columns */}
+        {/* Value columns */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           role="list"
-          aria-label="Razones para elegirnos"
+          aria-label="Por qué elegirnos"
         >
           {WHY_US.map((item, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               role="listitem"
-              className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white/70 backdrop-blur-sm border border-[#C9A0DC]/15 hover:border-[#C9A0DC]/40 hover:shadow-lg transition-all duration-300 group"
+              className="flex flex-col items-center text-center gap-4 p-7 bg-white border border-[rgba(201,169,122,0.15)] hover:border-[#C9A97A]/40 hover:shadow-[0_4px_24px_rgba(201,169,122,0.1)] transition-all duration-300 group"
             >
-              {/* Icon bubble */}
+              {/* Icon */}
               <div
-                className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C9A0DC]/10 text-3xl group-hover:bg-[#C9A0DC]/20 transition-colors duration-300"
+                className="flex h-14 w-14 items-center justify-center border border-[rgba(201,169,122,0.3)] text-2xl group-hover:border-[#C9A97A] transition-colors duration-300"
                 aria-hidden="true"
-                role="img"
               >
                 {item.icon}
               </div>
 
-              <h3 className="font-playfair text-lg font-semibold text-[#2D2D2D]">
+              <h3 className="font-cormorant text-lg font-light text-[#1A1410]">
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-xs text-[#1A1410]/55 leading-relaxed font-light">
                 {item.description}
               </p>
             </motion.div>
