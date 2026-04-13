@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAF7F5"/>
+      <stop offset="100%" style="stop-color:#F4C2C2;stop-opacity:0.4"/>
+    </linearGradient>
+    <!-- Decorative blobs -->
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#C9A0DC;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#C9A0DC;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F4C2C2;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#F4C2C2;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative blobs -->
+  <ellipse cx="150" cy="150" rx="280" ry="280" fill="url(#blob1)"/>
+  <ellipse cx="1050" cy="500" rx="240" ry="240" fill="url(#blob2)"/>
+
+  <!-- Brand icon background circle -->
+  <circle cx="600" cy="200" r="64" fill="#C9A0DC" opacity="0.15"/>
+  <circle cx="600" cy="200" r="52" fill="#C9A0DC"/>
+
+  <!-- Sparkle / nail icon (simplified sparkle shape) -->
+  <g transform="translate(600,200)" fill="white">
+    <circle cx="0" cy="-20" r="3"/>
+    <circle cx="0" cy="20" r="3"/>
+    <circle cx="-20" cy="0" r="3"/>
+    <circle cx="20" cy="0" r="3"/>
+    <circle cx="-14" cy="-14" r="2"/>
+    <circle cx="14" cy="-14" r="2"/>
+    <circle cx="-14" cy="14" r="2"/>
+    <circle cx="14" cy="14" r="2"/>
+    <rect x="-2" y="-18" width="4" height="36" rx="2"/>
+    <rect x="-18" y="-2" width="36" height="4" rx="2"/>
+  </g>
+
+  <!-- Brand name -->
+  <text
+    x="600"
+    y="318"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="72"
+    font-weight="700"
+    fill="#9B72B0"
+    letter-spacing="-1"
+  >Buñolnails</text>
+
+  <!-- Tagline -->
+  <text
+    x="600"
+    y="378"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28"
+    fill="#2D2D2D"
+    opacity="0.6"
+    letter-spacing="2"
+  >Tu belleza, nuestro arte</text>
+
+  <!-- Location pill -->
+  <rect x="470" y="418" width="260" height="42" rx="21" fill="#C9A0DC" opacity="0.15"/>
+  <text
+    x="600"
+    y="444"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="18"
+    fill="#9B72B0"
+    font-weight="600"
+  >Buñol, Valencia · España</text>
+
+  <!-- Bottom border accent -->
+  <rect x="0" y="610" width="1200" height="20" fill="#C9A0DC" opacity="0.5"/>
+</svg>
