@@ -1,26 +1,7 @@
 {
-  "framework": null,
-  "buildCommand": null,
+  "buildCommand": "",
   "outputDirectory": ".",
-  "cleanUrls": true,
-  "routes": [
-    { "src": "/", "dest": "/essentia-nails.html" },
-    { "src": "/(.*)", "dest": "/$1" }
-  ],
-  "headers": [
-    {
-      "source": "/essentia-nails.html",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
-      ]
-    }
+  "rewrites": [
+    { "source": "/", "destination": "/essentia-nails.html" }
   ]
 }
