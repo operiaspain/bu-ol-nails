@@ -211,11 +211,12 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 // ─── Gallery Images ──────────────────────────────────────────────────
-// TODO: reemplazar los src de placehold.co con rutas reales a fotos del negocio.
-//       Pasos: 1) pedir fotos al cliente (JPG/PNG, mín. 800px ancho)
-//              2) copiarlas a /public/gallery/ (ej: /gallery/nail-01.jpg)
-//              3) actualizar src, width y height de cada entrada
-//              4) eliminar "placehold.co" de next.config.js remotePatterns
+// Fotos temporales de Unsplash (nail art, licencia gratuita).
+// Cuando tengas fotos reales del cliente:
+//   1) Cópialas a /public/gallery/ (ej: /gallery/nail-01.jpg)
+//   2) Reemplaza src por la ruta local (ej: "/gallery/nail-01.jpg")
+//   3) Actualiza width, height y alt con los valores reales
+//   4) Elimina "images.unsplash.com" de next.config.js remotePatterns
 export interface GalleryImage {
   id: string;
   src: string;
@@ -225,14 +226,62 @@ export interface GalleryImage {
 }
 
 export const GALLERY_IMAGES: GalleryImage[] = [
-  { id: "g1", src: "https://placehold.co/400x533/C9A0DC/FFFFFF?text=Manicura+Gel", alt: "Manicura de gel rosa pastel con diseño floral elegante", width: 400, height: 533 },
-  { id: "g2", src: "https://placehold.co/400x300/F4C2C2/2D2D2D?text=Unas+Acrilicas", alt: "Uñas acrílicas largas con acabado nude brillante", width: 400, height: 300 },
-  { id: "g3", src: "https://placehold.co/400x480/9B72B0/FFFFFF?text=Nail+Art", alt: "Nail art artístico con diseño de mármol en tonos blancos", width: 400, height: 480 },
-  { id: "g4", src: "https://placehold.co/400x350/F4C2C2/2D2D2D?text=Pedicura", alt: "Pedicura con esmalte rojo clásico y piedras decorativas", width: 400, height: 350 },
-  { id: "g5", src: "https://placehold.co/400x430/C9A0DC/FFFFFF?text=Gel+Espejo", alt: "Uñas de gel con efecto espejo cromado plateado", width: 400, height: 430 },
-  { id: "g6", src: "https://placehold.co/400x320/FAF7F5/9B72B0?text=Francesa", alt: "Manicura francesa clásica con puntas blancas perfectas", width: 400, height: 320 },
-  { id: "g7", src: "https://placehold.co/400x500/9B72B0/FFFFFF?text=Degradado", alt: "Nail art con degradado lavanda y detalles dorados", width: 400, height: 500 },
-  { id: "g8", src: "https://placehold.co/400x370/F4C2C2/2D2D2D?text=Nude+Natural", alt: "Uñas cortas naturales con esmalte nude profesional", width: 400, height: 370 },
+  {
+    id: "g1",
+    src: "https://images.unsplash.com/tXwBDZS2JxQ?auto=format&fit=crop&w=800&q=80",
+    alt: "Nail art con acabado oscuro y detalle en anillo dorado",
+    width: 800,
+    height: 1067,
+  },
+  {
+    id: "g2",
+    src: "https://images.unsplash.com/gb6gtiTZKB8?auto=format&fit=crop&w=800&q=80",
+    alt: "Servicio de manicura profesional en salón de uñas",
+    width: 800,
+    height: 533,
+  },
+  {
+    id: "g3",
+    src: "https://images.unsplash.com/photo-1610992015762-45dca7fa3a85?auto=format&fit=crop&w=800&q=80",
+    alt: "Manicura de gel con diseño artístico en tonos nude",
+    width: 800,
+    height: 1000,
+  },
+  {
+    id: "g4",
+    src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=800&q=80",
+    alt: "Uñas de gel con acabado brillante y forma almendra",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: "g5",
+    src: "https://images.unsplash.com/photo-1612887390768-fb02affea7a6?auto=format&fit=crop&w=800&q=80",
+    alt: "Nail art con diseño floral y esmalte semipermanente",
+    width: 800,
+    height: 1067,
+  },
+  {
+    id: "g6",
+    src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=800&q=80",
+    alt: "Manicura francesa con puntas perfectas y acabado natural",
+    width: 800,
+    height: 533,
+  },
+  {
+    id: "g7",
+    src: "https://images.unsplash.com/photo-1736434518489-0eb84070017f?auto=format&fit=crop&w=800&q=80",
+    alt: "Uñas con degradado lavanda y detalles decorativos",
+    width: 800,
+    height: 1067,
+  },
+  {
+    id: "g8",
+    src: "https://images.unsplash.com/photo-1696342003838-4a8f9f36588c?auto=format&fit=crop&w=800&q=80",
+    alt: "Pedicura con esmalte en tono rosa y acabado glossy",
+    width: 800,
+    height: 1067,
+  },
 ];
 
 // ─── Navigation Links ────────────────────────────────────────────────
